@@ -1,148 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="estilo.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <title>INTERPOLACION</title>
 </head>
+
 <body>
     <h1>INTERPOLACION POR NEWTON</h1>
     <div class="container">
         <table class="table">
             <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">PUNTO X</th>
-                <th scope="col">PUNTO Y</th>
-              </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">PUNTO X</th>
+                    <th scope="col">PUNTO Y</th>
+                </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td><div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">X1</span>
-                    <input id="x1" type="number" class="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div></td>
-                <td><div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">Y1</span>
-                    <input id="y1" type="number" class="form-control" placeholder="2" aria-label="2" aria-describedby="addon-wrapping">
-                  </div></td>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">X1</span>
+                            <input id="x1" type="number" class="form-control" placeholder="1" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Y1</span>
+                            <input id="x2" type="number" class="form-control" placeholder="2" aria-label="2"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </td>
 
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td><div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">X2</span>
-                    <input id="x2" type="number" class="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div></td>
-                <td><div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">Y2</span>
-                    <input id="y2" type="number" class="form-control" placeholder="3" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td><div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">X3</span>
-                    <input id="x3" type="number" class="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div></td>
-                <td><div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">Y3</span>
-                    <input id="y3"type="number" class="form-control" placeholder="3" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div></td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td><div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">X4</span>
-                    <input id="x4"type="number" class="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div></td>
-                <td><div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">Y4</span>
-                    <input id="y4" type="number" class="form-control" placeholder="3" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div></td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td><div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">X5</span>
-                    <input id="x5" type="number" class="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div></td>
-                <td><div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">Y5</span>
-                    <input  id="y5" type="number" class="form-control" placeholder="3" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div></td>
-              </tr>
-              <tr>
-                <th scope="row">6</th>
-                <td><div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">X6</span>
-                    <input id="x6"  type="number" class="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div></td>
-                <td><div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">Y6</span>
-                    <input id="y6" type="number" class="form-control" placeholder="3" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div></td>
-              </tr>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">X2</span>
+                            <input id="x3" type="number" class="form-control" placeholder="1" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Y2</span>
+                            <input id="x4" type="number" class="form-control" placeholder="3" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">X3</span>
+                            <input id="x5" type="number" class="form-control" placeholder="1" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Y3</span>
+                            <input id="x6" type="number" class="form-control" placeholder="3" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">X4</span>
+                            <input id="x7" type="number" class="form-control" placeholder="1" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Y4</span>
+                            <input id="x8" type="number" class="form-control" placeholder="3" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">X5</span>
+                            <input id="x9" type="number" class="form-control" placeholder="1" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Y5</span>
+                            <input id="x10" type="number" class="form-control" placeholder="3" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">X6</span>
+                            <input id="x11" type="number" class="form-control" placeholder="1" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Y6</span>
+                            <input id="x12" type="number" class="form-control" placeholder="3" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </td>
+                </tr>
             </tbody>
-            
-          </table>
-          <div class="input-group ">
-<p> PUNTO DE INTERPOLACION , CUENTA CON EL METODO POR LAGRANGE O NEWTON.</p>
-            <input id="x" type="number" class="form-control" placeholder="PUNTO DE INTERPOLACION" aria-label="Recipient's username with two button addons">
+
+        </table>
+        <a href="https://planetcalc.com/8680/?xy=1%202000%0A2%204500%0A3%207500%0A4%2015000%0A5%2031000%0A6%2064000&showSteps=0&interpolate=2&showBasis=1">link planet calc</a>
+        <div class="input-group ">
+            <p> PUNTO DE INTERPOLACION , CUENTA CON EL METODO POR LAGRANGE y NEWTON.</p>
+            <input id="x" type="number" class="form-control" placeholder="PUNTO DE INTERPOLACION"
+                aria-label="Recipient's username with two button addons">
             <button class="btn btn-outline-primary" type="button">LAGRANGE</button>
             <button class="btn btn-outline-success" type="button" onclick="newton();">NEWTON</button>
-          </div>
-          <div id="grafica"></div>
+        </div>
+    
+        <p class="div" id="res"></p>
+        <hr>
+        <br>
+        <div id="grafica"></div>
     </div>
 
-    <script  >
-//expresion de newton
-function newton(){
-     x1=document.getElementById("x1").value;
-     x2=document.getElementById("x2").value;
-     x3=document.getElementById("x3").value;
-     x4=document.getElementById("x4").value;
-     x5=document.getElementById("x5").value;
-     x6=document.getElementById("x6").value;
+    <script >
+      //expresion de newton
+ function newton() {
+    x1 = document.getElementById("x1").value;
+    x3 = document.getElementById("x3").value;
+    x5 = document.getElementById("x5").value;
+    x7 = document.getElementById("x7").value;
+    x9 = document.getElementById("x9").value;
+    x11 = document.getElementById("x11").value;
 
-     y1=document.getElementById("y1").value;
-     y2=document.getElementById("y2").value;
-     y3=document.getElementById("y3").value;
-     y4=document.getElementById("y4").value;
-     y5=document.getElementById("y5").value;
-     y6=document.getElementById("y6").value;
+    x2 = document.getElementById("x2").value;
+    x4 = document.getElementById("x4").value;
+    x6 = document.getElementById("x6").value;
+    x8 = document.getElementById("x8").value;
+    x10 = document.getElementById("x10").value;
+    x12= document.getElementById("x12").value;
 
-     x=document.getElementById("x").value;
-
-     var trace1 = {
-  x: [x1,x2,x3,x4,x5,x6],
-  y: [y1,y2,y3,y4,y5,y6],
-  type: 'scatter'
-};
+    x = document.getElementById("x").value;
+    dato =y1*((x-x2)*(x-x3)*(x-x5))/2
 
 
-var data = [trace1];
+    document.getElementById("res").innerHTML = dato;
 
-var layout = {
-  xaxis: {
-    type: 'log',
-    autorange: true
-  },
-  yaxis: {
-    type: 'log',
-    autorange: true
-  }
-};
+    var trace1 = {
+        x: [x1,x3,x5,x7,x9,x11],
+        y: [x2,x4,x6,x8,x10,x12],
+        type: 'scatter'
+    };
 
-      Plotly.newPlot('grafica', data);
+
+    var data = [trace1];
+
+    var layout = {
+        xaxis: {
+            type: 'log',
+            autorange: true
+        },
+        yaxis: {
+            type: 'log',
+            autorange: true
+        }
+    };
+
+    Plotly.newPlot('grafica', data);
 }
 
 
     </script>
 </body>
+
 </html>
